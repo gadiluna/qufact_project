@@ -8,8 +8,8 @@
   <title>QUFACT — Where software meets quantum randomness</title>
   <link rel="icon" href="assets/qufact-mark.svg" type="image/svg+xml">
   <link rel="preload" href="assets/dm-sans-regular.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="styles.css">
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20261107-mobile">
+  <script src="app.js?v=20261107-mobile" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -23,7 +23,8 @@
   <main id="main">
     <section class="hero video-story" id="home" aria-labelledby="hero-title">
       <div class="hero-stage">
-        <video class="lab-video" id="lab-video" src="assets/lab-scroll.mp4" poster="assets/lab-scroll-poster.jpg" muted playsinline preload="auto" aria-label="Scroll-controlled close-up of the laboratory optical setup"></video>
+        <video class="lab-video" id="lab-video" data-src="assets/lab-scroll.mp4" poster="assets/lab-scroll-poster.jpg" muted playsinline preload="auto" aria-label="Scroll-controlled close-up of the laboratory optical setup"></video>
+        <canvas class="lab-frames" id="lab-frames" width="360" height="640" data-src="assets/lab-scroll-frames.webp" aria-hidden="true" hidden></canvas>
         <div class="hero-shade" aria-hidden="true"></div>
         <div class="hero-copy">
           <h1 id="hero-title">Where software<br>meets quantum<br>randomness</h1>

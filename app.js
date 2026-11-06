@@ -7,6 +7,15 @@ if (labVideo) {
   const heading = document.getElementById('hero-title');
   const secondMessage = story.querySelector('.hero-second');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const frameCanvas = document.getElementById('lab-frames');
+  const frameContext = frameCanvas.getContext('2d');
+  const frameSequence = new Image();
+  // Touch browsers may defer paused-video decoding, including in low-power mode.
+  // These frames come from the same footage and need no playback permission.
+  let useFrameSequence = Boolean(frameContext) &&
+    (navigator.maxTouchPoints > 0 || window.matchMedia('(pointer: coarse)').matches);
+  let sequenceReady = false;
+  let lastFrame = -1;
   let scrollFrame = 0;
 
   function renderLabFrame() {
@@ -16,7 +25,17 @@ if (labVideo) {
     const progress = Math.max(0, Math.min(1, -story.getBoundingClientRect().top / travel));
     heading.style.opacity = String(1 - Math.min(1, progress * 2.5));
     secondMessage.style.opacity = String(Math.max(0, Math.min(1, (progress - .35) / .2, (1 - progress) / .12)));
-    if (labVideo.readyState >= 2 && !labVideo.seeking && Number.isFinite(labVideo.duration)) {
+    if (useFrameSequence) {
+      if (!sequenceReady) return;
+      const frame = Math.round(progress * 59);
+      if (frame !== lastFrame) {
+        frameContext.drawImage(frameSequence,
+          (frame % 6) * 360, Math.floor(frame / 6) * 640, 360, 640,
+          0, 0, 360, 640);
+        lastFrame = frame;
+      }
+      frameCanvas.hidden = false;
+    } else if (labVideo.readyState >= 1 && !labVideo.seeking && Number.isFinite(labVideo.duration)) {
       const target = progress * Math.max(0, labVideo.duration - 1 / 30);
       if (Math.abs(labVideo.currentTime - target) > 1 / 60) {
         labVideo.currentTime = target;
@@ -29,16 +48,36 @@ if (labVideo) {
   }
 
   function updateLabMotion() {
-    story.classList.toggle('has-scroll-video', !reducedMotion.matches && !labVideo.error);
+    story.classList.toggle('has-scroll-video', !reducedMotion.matches && (useFrameSequence || !labVideo.error));
     heading.style.opacity = '1';
     secondMessage.style.opacity = '0';
+    frameCanvas.hidden = true;
     labVideo.pause();
     if (reducedMotion.matches && labVideo.readyState >= 1) labVideo.currentTime = 0;
+    if (!reducedMotion.matches) {
+      if (useFrameSequence) {
+        if (!frameSequence.src) frameSequence.src = frameCanvas.dataset.src;
+      } else if (!labVideo.getAttribute('src')) {
+        labVideo.src = labVideo.dataset.src;
+        labVideo.load();
+      }
+    }
     scheduleLabFrame();
   }
 
+  frameSequence.addEventListener('load', () => {
+    sequenceReady = true;
+    scheduleLabFrame();
+  });
+  frameSequence.addEventListener('error', () => {
+    useFrameSequence = false;
+    updateLabMotion();
+  });
   window.addEventListener('scroll', scheduleLabFrame, { passive: true });
   window.addEventListener('resize', scheduleLabFrame);
+  window.addEventListener('pageshow', scheduleLabFrame);
+  labVideo.addEventListener('loadedmetadata', scheduleLabFrame);
+  labVideo.addEventListener('durationchange', scheduleLabFrame);
   labVideo.addEventListener('loadeddata', scheduleLabFrame);
   labVideo.addEventListener('seeked', scheduleLabFrame);
   labVideo.addEventListener('error', updateLabMotion);
