@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#edf2e8">
+  <meta name="description" content="QUFACT brings together quantum physics, photonics, and software engineering to explore new possibilities for quantum computing.">
+  <title>QUFACT — Where software meets quantum randomness</title>
+  <link rel="icon" href="assets/qufact-mark.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/dm-sans-regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="QUFACT home">
+      <img class="brand-mark" src="assets/qufact-mark.svg" width="66" height="58" alt="">
+      <span>Qufact<span class="brand-dot">.</span></span>
+    </a>
+  </header>
+
+  <main id="main">
+    <section class="hero video-story" id="home" aria-labelledby="hero-title">
+      <div class="hero-stage">
+        <video class="lab-video" id="lab-video" src="assets/lab-scroll.mp4" poster="assets/lab-scroll-poster.jpg" muted playsinline preload="auto" aria-label="Scroll-controlled close-up of the laboratory optical setup"></video>
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="hero-copy">
+          <h1 id="hero-title">Where software<br>meets quantum<br>randomness</h1>
+          <p class="hero-second">Making quantum<br>photonics<br>programmable.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="science section-pad" id="science" aria-labelledby="science-title">
+      <div class="science-layout">
+        <div class="science-visual">
+          <h2 id="science-title">The Quantum<br>Bernoulli Factory</h2>
+          <picture>
+            <source media="(prefers-reduced-motion: reduce)" srcset="assets/bernoulli-probability-flow-poster.png">
+            <img class="science-illustration" src="assets/bernoulli-probability-flow.gif" width="1200" height="600" loading="lazy" decoding="async" alt="A conceptual animation of a probability density entering a photonic circuit, photons following its waveguides, and a transformed probability density emerging and exiting.">
+          </picture>
+        </div>
+        <div class="science-copy">
+          <p class="lead">Can you change the odds of a coin toss without knowing the original odds?</p>
+          <p>Toss a coin twice and count two heads as a win. If each toss lands heads with probability <i>p</i>, the chance of winning is <i>p</i>². That’s a simple Bernoulli factory.</p>
+          <p>Using qubits expands the range of probability transformations we can build.</p>
+          <p>QUFACT is building software to design and test these transformations on photonic hardware.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="approach section-pad roadmap" id="approach" aria-labelledby="approach-title">
+      <div class="roadmap-intro">
+        <h2 id="approach-title">Project timeline</h2>
+        <svg class="bloch-sphere" viewBox="0 0 360 360" width="360" height="360" role="img" aria-labelledby="bloch-title bloch-description">
+          <title id="bloch-title">Bloch sphere</title>
+          <desc id="bloch-description">A quantum state vector rotating around the vertical axis inside a Bloch sphere.</desc>
+          <defs>
+            <radialGradient id="bloch-glass" cx="35%" cy="25%" r="75%">
+              <stop stop-color="#ffffff" stop-opacity=".65"/>
+              <stop offset="1" stop-color="#c8d8ae" stop-opacity=".18"/>
+            </radialGradient>
+          </defs>
+          <circle cx="180" cy="180" r="126" fill="url(#bloch-glass)" stroke="#809575" stroke-width="1.1"/>
+          <g fill="none" stroke="#809575" stroke-width=".85" opacity=".6">
+            <ellipse cx="180" cy="180" rx="126" ry="44"/>
+            <ellipse cx="180" cy="180" rx="44" ry="126"/>
+          </g>
+          <g fill="none" stroke="#657c60" stroke-width=".9" opacity=".55">
+            <path d="M180 180V36M180 180H324"/>
+            <path d="M180 180V324M180 180H36" stroke-dasharray="3 6"/>
+          </g>
+          <ellipse cx="180" cy="120.8" rx="109.12" ry="37.32" fill="none" stroke="#e46f32" stroke-width=".9" stroke-dasharray="2 6" opacity=".25"/>
+          <line id="bloch-vector" x1="180" y1="180" x2="289.12" y2="120.8" stroke="#e46f32" stroke-width="2.7" stroke-linecap="round"/>
+          <path id="bloch-arrowhead" d="M-11 -5L0 0L-11 5" transform="translate(289.12 120.8) rotate(-28.48)" fill="none" stroke="#e46f32" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="180" cy="180" r="3" fill="#496342"/>
+        </svg>
+      </div>
+      <ol class="roadmap-list" role="list">
+        <li>
+          <time class="roadmap-date" datetime="2024">2024</time>
+          <div class="roadmap-detail">
+            <h3><a href="https://arxiv.org/abs/2410.06204">Quantum Bernoulli Factory demonstration</a></h3>
+            <p>The research team demonstrated a modular Quantum Bernoulli Factory on an integrated photonic processor. The experiment showed how to transform probabilities encoded in photonic qubits.</p>
+          </div>
+        </li>
+        <li>
+          <span class="roadmap-date">2025–2026</span>
+          <div class="roadmap-detail">
+            <h3><a href="https://cordis.europa.eu/project/id/101212872">POQUB proof of concept</a></h3>
+            <p>The Sapienza-led ERC project focused on developing the photonic approach and identifying applications in blind quantum computing.</p>
+          </div>
+        </li>
+        <li>
+          <span class="roadmap-date">2025–2026</span>
+          <div class="roadmap-detail">
+            <h3><a href="https://boostyourideas.lazioinnova.it/it/progetti-in-corso/?call=BYI10t">Boost Your Ideas</a> and <a href="https://www.rometechnopole.it/spinout-showcase-la-ricerca-incontra-il-mercato-e-costruisce-nuove-traiettorie-di-impatto/">SpinOut!</a></h3>
+            <p>Lazio Innova selected QUFACT for Boost Your Ideas. The team also presented the project at Rome Technopole’s SpinOut! Showcase.</p>
+          </div>
+        </li>
+        <li class="roadmap-current">
+          <time class="roadmap-date" datetime="2026-10">October 2026</time>
+          <div class="roadmap-detail">
+            <h3><a href="https://ttlazio.lazioinnova.it/Public/ConAllegato/50/TT_Lazio_-_Esiti_candidature.pdf#page=5">TT Lazio admission</a></h3>
+            <p>QUFACT was admitted to Get Ready, the first phase of Lazio Innova’s Technology Transfer Lazio programme. The phase focuses on potential applications, market validation, and intellectual property strategy.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="people section-pad" id="people" aria-labelledby="people-title">
+      <div class="people-layout"><div class="people-intro"><h2 id="people-title">Our team</h2><p>Our scientific team connects quantum photonics with the craft of building software.</p></div><div class="people-list">
+        <div class="person"><div><h3>Fabio Sciarrino</h3><p>Quantum computing and information</p></div></div>
+        <div class="person"><div><h3>Nicolò Spagnolo</h3><p>Benchmarking and control software</p></div></div>
+        <div class="person"><div><h3>Taira Giordani</h3><p>Quantum technologies</p></div></div>
+        <div class="person"><div><h3>Valeria Cimini</h3><p>Quantum machine learning</p></div></div>
+        <div class="person"><div><h3>Giuseppe Antonio Di Luna</h3><p>Computer scientist</p></div></div>
+        <div class="person"><div><h3>Gonzalo Carvacho</h3><p>Quantum randomness</p></div></div>
+        <div class="person"><div><h3>Alessio Pascucci</h3><p>Computer scientist</p></div></div>
+      </div></div>
+    </section>
+
+    <section class="contact section-pad" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <a class="contact-link" href="https://www.linkedin.com/company/qufact" target="_blank" rel="noopener noreferrer" aria-label="QUFACT on LinkedIn, opens in a new tab">QUFACT on LinkedIn <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#home" aria-label="QUFACT home">Qufact<span class="brand-dot">.</span></a>
+    <span>© <span id="year">2026</span> QUFACT</span>
+  </footer>
+</body>
+</html>
